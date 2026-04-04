@@ -94,7 +94,7 @@ ORDER "END"
 "ENDE";locale_de
 
 ORDER "FOLLOW"
-"FOLGE (EINHEIT u1) | (SCHIFF s2)";syntax
+"FOLGE (EINHEIT u1) | (SCHIFF s2) | (STANDARTE x3)";syntax
 "FOLGE";locale_de
 "FOLGEN";locale_de
 
@@ -115,7 +115,7 @@ ORDER "HELP"
 "HELFEN";locale_de
 
 ORDER "COMBAT"
-"KÄMPFEN [AGGRESSIV|HINTEN|DEFENSIV|NICHT|FLIEHE|(HELFE [NICHT])]";syntax
+"KÄMPFEN [AGGRESSIV|VORNE|HINTEN|DEFENSIV|NICHT|FLIEHE|(HELFE [NICHT])]";syntax
 "KÄMPFEN";locale_de
 "KÄMPFE";locale_de
 
@@ -129,7 +129,7 @@ ORDER "BUY"
 "KAUFEN";locale_de
 
 ORDER "CONTACT"
-"KONTAKTIEREN (EINHEIT)|(FACTION) u1";syntax
+"KONTAKTIEREN (*)|(EINHEIT)|(FACTION) u1";syntax
 "KONTAKTIERE";locale_de
 "KONTAKTIEREN";locale_de
 
@@ -173,6 +173,18 @@ ORDER "REICH"
 "REICH x1";syntax
 "REICH";locale_de
 
+ORDER "MITNEHMEN"
+"MITNEHMEN u1";syntax
+"MITNEHMEN";locale_de
+
+ORDER "MITREISEN"
+"MITREISEN u1";syntax
+"MITREISEN";locale_de
+
+ORDER "UMSIEDELN"
+"UMSIEDELN x1 (1 PERSONEN)";syntax
+"UMSIEDELN";locale_de
+
 ORDER "FACTION"
 "PARTEI f1";syntax
 "PARTEI";locale_de
@@ -215,6 +227,13 @@ ORDER "HIDE"
 "TARNEN ([1]) | (Rasse) | (PARTEI [NICHT]) | (PARTEI NUMMER f1)";syntax
 "TARNE";locale_de
 "TARNEN";locale_de
+"HIDE";locale_en
+
+ORDER "CARRY"
+"TRANSPORTIEREN [NICHT]";syntax
+"TRANSPORTIERE";locale_de
+"TRANSPORTIEREN";locale_de
+"CARRY";locale_en
 
 ORDER "TAX"
 "TREIBEN [1]";syntax
@@ -229,6 +248,13 @@ ORDER "ENTERTAIN"
 ORDER "ORIGIN"
 "URSPRUNG 1 2";syntax
 "URSPRUNG";locale_de
+"ORIGIN";locale_en
+
+ORDER "FORGET"
+"VERGESSEN Talent";syntax
+"VERGISS";locale_de
+"VERGESSE";locale_de
+"FORGET";locale_en
 
 ORDER "SELL"
 "VERKAUFEN 1 | ALLES  Luxus";syntax
@@ -251,7 +277,9 @@ ORDER "DESTROY"
 "ZERSTÖREN";locale_de
 
 ORDER "PERSISTENT"
-"";locale_de
+"@";locale_de
+"@ * ";locale_de
+"@";locale_en
 1;internal
 
 ORDER "AFTER"
@@ -629,7 +657,7 @@ HERB "Gurgelkraut"
 
 HERB "Höhlenglimm"
 "Höhlenglimm";name
-"Berge";region
+"Gebirge";region
 "herbs";category
 "cavelichen";iconname
 
@@ -659,13 +687,13 @@ HERB "Schneekristall"
 
 HERB "Spaltwachs"
 "Spaltwachs";name
-"Berge";region
+"Gebirge";region
 "herbs";category
 "gapgrowth";iconname
 
 HERB "Steinbeißer"
 "Steinbeißer";name
-"Berge";region
+"Gebirge";region
 "herbs";category
 "rockweed";iconname
 
@@ -724,8 +752,8 @@ SKILL "Holzfällen"
 SKILL "Juwelierskunst"
 "Juwelierskunst";name
 "build";category
-SKILL "Katapultbedienung"
-"Katapultbedienung";name
+SKILL "Katapultschießen"
+"Katapultschießen";name
 "war";category
 SKILL "Kräuterkunde"
 "Kräuterkunde";name
@@ -849,7 +877,7 @@ TALENTBONI
 1;Handeln
 1;Hiebwaffen
 -1;Holzfällen
-2;Katapultbedienung
+2;Katapultschießen
 -2;Kräuterkunde
 -2;Magie
 -2;Pferdedressur
@@ -863,7 +891,7 @@ TALENTBONI
 -1;Tarnung
 -1;Unterhaltung
 2;Waffenbau
-TALENTBONI "Berge"
+TALENTBONI "Gebirge"
 1;Taktik
 TALENTBONI "Gletscher"
 1;Taktik
@@ -904,7 +932,7 @@ TALENTBONI
 2;Bogenbau
 2;Bogenschießen
 -1;Burgenbau
--2;Katapultbedienung
+-2;Katapultschießen
 2;Kräuterkunde
 1;Magie
 1;Pferdedressur
@@ -932,7 +960,7 @@ TALENTBONI
 1;Burgenbau
 2;Handeln
 -1;Hiebwaffen
--1;Katapultbedienung
+-1;Katapultschießen
 2;Kräuterkunde
 -1;Pferdedressur
 -1;Reiten
@@ -963,7 +991,7 @@ TALENTBONI
 -2;Bogenschießen
 2;Burgenbau
 1;Hiebwaffen
-2;Katapultbedienung
+2;Katapultschießen
 -1;Kräuterkunde
 -1;Pferdedressur
 -2;Reiten
@@ -989,7 +1017,7 @@ TALENTBONI
 2;Handeln
 -1;Hiebwaffen
 1;Holzfällen
--2;Katapultbedienung
+-2;Katapultschie0en
 -1;Pferdedressur
 -1;Reiten
 -2;Rüstungsbau
@@ -1322,6 +1350,24 @@ ITEM "Greife"
 0;storeinbonw
 1;ishorse
 
+ITEM "Warg"
+"Warg";name
+15;weight
+"Magic";makeskill
+1;makeskilllevel
+"resources";category
+0;storeinbonw
+1;ishorse
+
+ITEM "Warge"
+"Warge";name
+15;weight
+"Magic";makeskill
+1;makeskilllevel
+"resources";category
+0;storeinbonw
+1;ishorse
+
 ITEM "Wagen"
 "Wagen";name
 40;weight
@@ -1350,7 +1396,19 @@ ITEM "Wagenwracks"
 "resources";category
 0;storeinbonw
 RESOURCES
-1;
+1;Holz
+
+ITEM "Prunkkutsche"
+"Prunkkutsche";name
+100;weight
+"Wagenbau";makeskill
+5;makeskilllevel
+"resources";category
+0;storeinbonw
+RESOURCES
+20;Holz
+10;Juwel
+1;Gold
 
 ITEM "Speer"
 "Speer";name
@@ -1737,7 +1795,7 @@ ITEM "Katapult"
 "Katapult";name
 100;weight
 "Wagenbau";makeskill
-"Katapultbedienung";useskill
+"Katapultschießen";useskill
 3;makeskilllevel
 "distance weapons";category
 0;storeinbonw
@@ -1748,7 +1806,7 @@ ITEM "Katapulte"
 "Katapulte";name
 100;weight
 "Wagenbau";makeskill
-"Katapultbedienung";useskill
+"Katapultschießen";useskill
 3;makeskilllevel
 "distance weapons";category
 0;storeinbonw
@@ -1759,7 +1817,7 @@ ITEM "Marodes Katapult"
 "Marodes Katapult";name
 100;weight
 "Wagenbau";makeskill
-"Katapultbedienung";useskill
+"Katapultschießen";useskill
 1;makeskilllevel
 "distance weapons";category
 0;storeinbonw
@@ -1770,7 +1828,7 @@ ITEM "Marode Katapulte"
 "Marode Katapulte";name
 100;weight
 "Wagenbau";makeskill
-"Katapultbedienung";useskill
+"Katapultschießen";useskill
 1;makeskilllevel
 "distance weapons";category
 0;storeinbonw
@@ -2110,12 +2168,6 @@ RESOURCES
 1;Gurgelkraut
 1;Höhlenglimm
 
-ITEM "Kadaver"
-"Kadaver";name
-"misc";category
-10;weight
-0;storeinbonw
-
 ITEM "Ring der Unsichtbarkeit"
 "Ring der Unsichtbarkeit";name
 "misc";category
@@ -2125,13 +2177,79 @@ ITEM "Ring der Unsichtbarkeit"
 ITEM "Schriftrolle"
 "Schriftrolle";name
 "misc";category
-1;weight
+0.01;weight
 0;storeinbonw
 
 ITEM "Zauberbuch"
 "Zauberbuch";name
 "misc";category
-1;weight
+0.5;weight
+0;storeinbonw
+
+ITEM "Schatzkarte"
+"Schatzkarte";name
+"misc";category
+0.01;weight
+0;storeinbonw
+
+ITEM "Schatztruhe"
+"Schatztruhe";name
+"misc";category
+4;weight
+0;storeinbonw
+
+ITEM "Passierschein"
+"Passierschein";name
+"misc";category
+0.01;weight
+0;storeinbonw
+
+ITEM "Urkunde"
+"Urkunde";name
+"misc";category
+0.01;weight
+0;storeinbonw
+
+ITEM "Bärenstandarte"
+"Bärenstandarte";name
+"misc";category
+4;weight
+0;storeinbonw
+
+ITEM "Greifenstandarte"
+"Greifenstandarte";name
+"misc";category
+3;weight
+0;storeinbonw
+
+ITEM "Koboldstandarte"
+"Koboldstandarte";name
+"misc";category
+3;weight
+0;storeinbonw
+
+ITEM "Pegasusstandarte"
+"Pegasusstandarte";name
+"misc";category
+3;weight
+0;storeinbonw
+
+ITEM "Sandwurmstandarte"
+"Sandwurmstandarte";name
+"misc";category
+7;weight
+0;storeinbonw
+
+ITEM "Schädelstandarte"
+"Schädelstandarte";name
+"misc";category
+5;weight
+0;storeinbonw
+
+ITEM "Wolfsstandarte"
+"Wolfsstandarte";name
+"misc";category
+5;weight
 0;storeinbonw
 
 ITEM "Goblinohr"
@@ -2371,7 +2489,7 @@ RAWMATERIALS
 1;Eisen
 20;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Gletscher"
 
 BUILDINGTYPE "Plantage"
@@ -2398,7 +2516,7 @@ RAWMATERIALS
 TALENTBONI
 1;Holzfällen
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2419,7 +2537,7 @@ RAWMATERIALS
 TALENTBONI
 1;Holzfällen
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2438,7 +2556,7 @@ RAWMATERIALS
 TALENTBONI
 1;Steinbau
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2459,7 +2577,7 @@ RAWMATERIALS
 TALENTBONI
 1;Steinbau
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2478,7 +2596,7 @@ RAWMATERIALS
 TALENTBONI
 1;Bergbau
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2499,7 +2617,7 @@ RAWMATERIALS
 TALENTBONI
 1;Bergbau
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2518,7 +2636,7 @@ RAWMATERIALS
 TALENTBONI
 1;Kräuterkunde
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2539,7 +2657,7 @@ RAWMATERIALS
 2;Eisen
 250;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2561,7 +2679,7 @@ RAWMATERIALS
 4;Eisen
 250;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2582,7 +2700,7 @@ RAWMATERIALS
 6;Eisen
 250;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2603,7 +2721,7 @@ RAWMATERIALS
 10;Eisen
 500;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2625,7 +2743,7 @@ RAWMATERIALS
 1;Gold
 300;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2644,7 +2762,7 @@ RAWMATERIALS
 2;Eisen
 100;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2663,7 +2781,7 @@ RAWMATERIALS
 2;Eisen
 100;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2680,7 +2798,7 @@ RAWMATERIALS
 2;Eisen
 50;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2699,7 +2817,7 @@ RAWMATERIALS
 6;Eisen
 250;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2718,7 +2836,7 @@ RAWMATERIALS
 2;Eisen
 100;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2737,7 +2855,7 @@ RAWMATERIALS
 1;Eisen
 200;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2756,7 +2874,7 @@ RAWMATERIALS
 3;Eisen
 500;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2774,7 +2892,7 @@ RAWMATERIALS
 1;Eisen
 50;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2793,7 +2911,7 @@ RAWMATERIALS
 4;Eisen
 300;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2812,7 +2930,7 @@ RAWMATERIALS
 1;Eisen
 250;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2831,7 +2949,7 @@ RAWMATERIALS
 2;Eisen
 100;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2848,7 +2966,7 @@ RAWMATERIALS
 1;Eisen
 50;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2868,7 +2986,7 @@ RAWMATERIALS
 1;Eisen
 500;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2885,7 +3003,7 @@ RAWMATERIALS
 1;Eisen
 100;Silber
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2901,7 +3019,7 @@ RAWMATERIALS
 5;Stein
 5;Holz
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2915,7 +3033,7 @@ BUILDINGTYPE "Geschäft"
 0;maxsize
 RAWMATERIALS
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2929,7 +3047,7 @@ BUILDINGTYPE "Höhle"
 0;maxsize
 RAWMATERIALS
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2943,7 +3061,7 @@ BUILDINGTYPE "Ruine"
 0;maxsize
 RAWMATERIALS
 REGIONTYPES
-"Berge"
+"Gebirge"
 "Ebene"
 "Gletscher"
 "Hochland"
@@ -2951,8 +3069,8 @@ REGIONTYPES
 "Wüste"
 "Wald"
 
-REGIONTYPE "Berge"
-"Berge";name
+REGIONTYPE "Gebirge"
+"Gebirge";name
 1000;maxworkers
 200;roadstones
 "true";isAstralVisible
